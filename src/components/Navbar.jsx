@@ -25,6 +25,20 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [open])
 
+  useEffect(() => {
+    if (!open) return
+
+    document.body.style.overflow = 'hidden'
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
+
   return (
     <nav
       style={{
