@@ -48,8 +48,8 @@ export default function AboutSection() {
           style={{ position: 'relative', zIndex: 0 }}
         >
           <img
-            src="https://picsum.photos/600/700?random=5"
-            alt="Team TransformRS"
+            src="https://images.unsplash.com/photo-1652363723034-e0deb0b48b15?q=75&w=900&auto=format&fit=crop"
+            alt="Coach and client celebrating a training win"
             style={{ width: '100%', height: '600px', objectFit: 'cover', borderRadius: '4px' }}
           />
           <div

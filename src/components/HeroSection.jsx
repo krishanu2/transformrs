@@ -29,9 +29,9 @@ export default function HeroSection() {
   return (
     <section style={{ position: 'relative', width: '100%', height: '100vh', minHeight: '600px', overflow: 'hidden', background: '#0B0B0C' }}>
       <motion.img
-        src="https://picsum.photos/1400/900?random=1"
-        alt="Team TransformRS"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', filter: 'brightness(0.5)', y: parallaxY }}
+        src="https://images.unsplash.com/photo-1649789248266-ef1c7f744f6f?q=75&w=1600&auto=format&fit=crop"
+        alt="Team TransformRS coaches training together"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', filter: 'brightness(0.5)', y: parallaxY }}
       />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(11,11,12,0.2) 0%, rgba(11,11,12,0.1) 50%, rgba(11,11,12,0.8) 100%)' }} />
 
@@ -39,7 +39,7 @@ export default function HeroSection() {
         variants={container}
         initial="hidden"
         animate="visible"
-        style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px' }}
+        style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px', paddingTop: 'clamp(110px, 14vh, 170px)' }}
       >
         <h1
           style={{

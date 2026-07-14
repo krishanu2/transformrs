@@ -1,7 +1,7 @@
 export const photos = [
   {
     id: 10,
-    src: 'https://picsum.photos/400/350?random=10',
+    src: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=70&w=500&auto=format&fit=crop',
     height: 350,
     span: null,
     category: 'lifestyle',
@@ -10,7 +10,7 @@ export const photos = [
   },
   {
     id: 11,
-    src: 'https://picsum.photos/400/500?random=11',
+    src: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=70&w=500&auto=format&fit=crop',
     height: 500,
     span: 'row',
     category: 'women',
@@ -19,7 +19,7 @@ export const photos = [
   },
   {
     id: 12,
-    src: 'https://picsum.photos/400/350?random=12',
+    src: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=70&w=500&auto=format&fit=crop',
     height: 350,
     span: null,
     category: 'men',
@@ -28,7 +28,7 @@ export const photos = [
   },
   {
     id: 13,
-    src: 'https://picsum.photos/400/250?random=13',
+    src: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=70&w=500&auto=format&fit=crop',
     height: 250,
     span: null,
     category: 'lifestyle',
@@ -37,7 +37,7 @@ export const photos = [
   },
   {
     id: 14,
-    src: 'https://picsum.photos/400/250?random=14',
+    src: 'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=70&w=500&auto=format&fit=crop',
     height: 250,
     span: null,
     category: 'competition',
@@ -46,7 +46,7 @@ export const photos = [
   },
   {
     id: 15,
-    src: 'https://picsum.photos/800/300?random=15',
+    src: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=70&w=900&auto=format&fit=crop',
     height: 300,
     span: 'col',
     category: 'men',
@@ -55,10 +55,10 @@ export const photos = [
   },
   {
     id: 16,
-    src: 'https://picsum.photos/400/300?random=16',
+    src: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=70&w=500&auto=format&fit=crop',
     height: 300,
     span: null,
-    category: 'women',
+    category: 'lifestyle',
     caption: 'Reverse Diet Success · 5 months',
     service: 'Lifestyle Coaching',
   },
