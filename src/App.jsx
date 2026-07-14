@@ -6,6 +6,7 @@ import PhotoGridSection from './components/PhotoGridSection'
 import CoachesSection from './components/CoachesSection'
 import ProgramsSection from './components/ProgramsSection'
 import TestimonialsSection from './components/TestimonialsSection'
+import ContactSection from './components/ContactSection'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <CoachesSection />
       <ProgramsSection />
       <TestimonialsSection />
+      <ContactSection />
     </div>
   )
 }
