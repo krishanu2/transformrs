@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background: #0B0B0C;
+  font-family: 'DM Sans', sans-serif;
+}
+
+@keyframes scrollRTL {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.coaches-scroll-track {
+  animation: scrollRTL 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.coaches-scroll-track:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .coaches-scroll-track {
+    animation-duration: 50s;
+  }
+}
+
+@keyframes pulseLine {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.scroll-indicator-line {
+  animation: pulseLine 2s infinite;
+}
