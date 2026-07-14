@@ -27,7 +27,7 @@ export default function HeroSection() {
   const parallaxY = useTransform(scrollY, [0, 600], [0, isDesktop ? 180 : 0], { clamp: true })
 
   return (
-    <section style={{ position: 'relative', width: '100%', height: '100vh', minHeight: '600px', overflow: 'hidden', background: '#0B0B0C' }}>
+    <section style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', background: '#0B0B0C' }}>
       <motion.img
         src="https://images.unsplash.com/photo-1649789248266-ef1c7f744f6f?q=75&w=1600&auto=format&fit=crop"
         alt="Team TransformRS coaches training together"
@@ -39,13 +39,25 @@ export default function HeroSection() {
         variants={container}
         initial="hidden"
         animate="visible"
-        style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px', paddingTop: 'clamp(110px, 14vh, 170px)' }}
+        style={{
+          position: 'relative',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '0 24px',
+          paddingTop: 'clamp(90px, 11vh, 150px)',
+          paddingBottom: '80px',
+          boxSizing: 'border-box',
+        }}
       >
         <h1
           style={{
             fontFamily: 'Oswald, sans-serif',
             fontWeight: 700,
-            fontSize: 'clamp(40px, 10vw, 140px)',
+            fontSize: 'clamp(40px, min(9vw, 11vh), 130px)',
             lineHeight: 1.0,
             letterSpacing: '-0.02em',
             textTransform: 'uppercase',
