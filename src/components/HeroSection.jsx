@@ -57,7 +57,7 @@ export default function HeroSection() {
           style={{
             fontFamily: 'Oswald, sans-serif',
             fontWeight: 700,
-            fontSize: 'clamp(40px, min(9vw, 11vh), 130px)',
+            fontSize: 'clamp(44px, min(10.5vw, 13vh), 140px)',
             lineHeight: 1.0,
             letterSpacing: '-0.02em',
             textTransform: 'uppercase',
