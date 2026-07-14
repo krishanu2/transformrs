@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import StatsStrip from './components/StatsStrip'
@@ -10,6 +11,13 @@ import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 
 export default function App() {
+  const [selectedCoachId, setSelectedCoachId] = useState(null)
+
+  const handleSelectCoach = (coachId) => {
+    setSelectedCoachId(coachId)
+    document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <div style={{ background: '#0B0B0C' }}>
       <Navbar />
@@ -17,9 +25,9 @@ export default function App() {
       <StatsStrip />
       <AboutSection />
       <PhotoGridSection />
-      <CoachesSection />
+      <CoachesSection selectedCoachId={selectedCoachId} onSelectCoach={handleSelectCoach} />
       <ProgramsSection />
-      <TestimonialsSection />
+      <TestimonialsSection selectedCoachId={selectedCoachId} onClearCoach={() => setSelectedCoachId(null)} />
       <ContactSection />
       <Footer />
 
