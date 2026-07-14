@@ -45,7 +45,7 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-          style={{ position: 'relative' }}
+          style={{ position: 'relative', zIndex: 0 }}
         >
           <img
             src="https://picsum.photos/600/700?random=5"
