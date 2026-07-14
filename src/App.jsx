@@ -4,6 +4,7 @@ import StatsStrip from './components/StatsStrip'
 import AboutSection from './components/AboutSection'
 import PhotoGridSection from './components/PhotoGridSection'
 import CoachesSection from './components/CoachesSection'
+import ProgramsSection from './components/ProgramsSection'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <AboutSection />
       <PhotoGridSection />
       <CoachesSection />
+      <ProgramsSection />
     </div>
   )
 }
