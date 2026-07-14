@@ -2,31 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
 body {
   margin: 0;
   background: #0B0B0C;
   font-family: 'DM Sans', sans-serif;
+  -webkit-overflow-scrolling: touch;
 }
 
-@keyframes scrollRTL {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(244, 196, 0, 0.15);
 }
 
-.coaches-scroll-track {
-  animation: scrollRTL 40s linear infinite;
-  display: flex;
-  width: max-content;
+/* Custom page scrollbar */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+body::-webkit-scrollbar-thumb {
+  background: #F4C400;
+  border-radius: 3px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #D4A800;
 }
 
-.coaches-scroll-track:hover {
-  animation-play-state: paused;
+/* Utility: hide scrollbar on swipeable tracks (coaches, mobile testimonials) while staying scrollable */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  .coaches-scroll-track {
-    animation-duration: 50s;
-  }
+/* Keyboard focus indicators */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #F4C400;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 @keyframes pulseLine {
@@ -36,4 +62,15 @@ body {
 
 .scroll-indicator-line {
   animation: pulseLine 2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

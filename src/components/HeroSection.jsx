@@ -1,27 +1,37 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 
 const container = {
   hidden: { opacity: 1 },
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
 }
 
 const line = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.215, 0.61, 0.355, 1] } },
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.215, 0.61, 0.355, 1] } },
 }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+const subheadline = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.3, ease: 'easeOut' } },
+}
+
+const buttonsVariant = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.45, ease: 'easeOut' } },
 }
 
 export default function HeroSection() {
+  const { scrollY } = useScroll()
+  const isDesktop = useMediaQuery('(min-width: 1025px)')
+  const parallaxY = useTransform(scrollY, [0, 600], [0, isDesktop ? 180 : 0], { clamp: true })
+
   return (
     <section style={{ position: 'relative', width: '100%', height: '100vh', minHeight: '600px', overflow: 'hidden', background: '#0B0B0C' }}>
-      <img
+      <motion.img
         src="https://picsum.photos/1400/900?random=1"
         alt="Team TransformRS"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', filter: 'brightness(0.5)' }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', filter: 'brightness(0.5)', y: parallaxY }}
       />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(11,11,12,0.2) 0%, rgba(11,11,12,0.1) 50%, rgba(11,11,12,0.8) 100%)' }} />
 
@@ -54,13 +64,13 @@ export default function HeroSection() {
         </h1>
 
         <motion.p
-          variants={fadeUp}
+          variants={subheadline}
           style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(16px, 2.5vw, 22px)', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.05em', marginBottom: '40px', maxWidth: '600px' }}
         >
           Two IFBB Pro coaches. One mission. Real transformation without the guilt.
         </motion.p>
 
-        <motion.div variants={fadeUp} className="flex-col md:flex-row" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
+        <motion.div variants={buttonsVariant} className="flex-col md:flex-row" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
           <button
             className="w-full md:w-auto"
             style={{ background: '#F4C400', color: '#0B0B0C', fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', padding: '16px 40px', borderRadius: '999px', border: 'none', cursor: 'pointer', minHeight: '52px', transition: 'transform 200ms ease' }}

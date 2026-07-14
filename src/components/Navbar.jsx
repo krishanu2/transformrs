@@ -6,12 +6,24 @@ const links = ['Home', 'Coaches', 'Programs', 'Transformations', 'Contact']
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 60)
+
+      if (window.innerWidth < 768 && !open) {
+        setHidden(y > lastY && y > 100)
+      } else {
+        setHidden(false)
+      }
+      lastY = y
+    }
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [open])
 
   return (
     <nav
@@ -28,7 +40,8 @@ export default function Navbar() {
         background: scrolled ? 'rgba(11,11,12,0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-        transition: 'all 300ms ease',
+        transform: hidden ? 'translateY(-80px)' : 'translateY(0)',
+        transition: 'background 300ms ease, backdrop-filter 300ms ease, border-color 300ms ease, transform 300ms ease',
       }}
       className="md:px-12"
     >
