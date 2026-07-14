@@ -7,6 +7,7 @@ import CoachesSection from './components/CoachesSection'
 import ProgramsSection from './components/ProgramsSection'
 import TestimonialsSection from './components/TestimonialsSection'
 import ContactSection from './components/ContactSection'
+import Footer from './components/Footer'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
       <ProgramsSection />
       <TestimonialsSection />
       <ContactSection />
+      <Footer />
     </div>
   )
 }
