@@ -36,7 +36,7 @@ export default function CoachesSection({ selectedCoachId, onSelectCoach }) {
   }
 
   return (
-    <section style={{ background: '#0B0B0C', padding: 'clamp(80px, 10vw, 120px) 0', overflow: 'hidden' }}>
+    <section id="coaches" style={{ background: '#0B0B0C', padding: 'clamp(80px, 10vw, 120px) 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(24px, 4vw, 48px)', marginBottom: '48px' }}>
         <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', letterSpacing: '4px', color: '#F4C400', textTransform: 'uppercase', marginBottom: '12px' }}>
           The Team

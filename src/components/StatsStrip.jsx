@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView, animate } from 'framer-motion'
 
 const stats = [
-  { value: 200, suffix: '+', label: 'Clients Transformed' },
-  { value: 2, suffix: 'x', label: 'IFBB Pro Card Holders' },
-  { value: 5, suffix: '+', label: 'Years Coaching' },
-  { value: 3, suffix: '', label: 'Services · Online · Prep · Posing' },
+  { value: 500, suffix: '+', label: 'Clients Transformed' },
+  { value: 2, suffix: '', label: 'IFBB Pro Coaches' },
+  { value: 6, suffix: '+', label: 'Years Coaching' },
+  { value: 4, suffix: '', label: 'Services · Lifestyle · Prep · Posing' },
 ]
 
 function StatCard({ value, suffix, label }) {

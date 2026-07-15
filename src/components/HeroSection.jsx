@@ -27,7 +27,7 @@ export default function HeroSection() {
   const parallaxY = useTransform(scrollY, [0, 600], [0, isDesktop ? 180 : 0], { clamp: true })
 
   return (
-    <section style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', background: '#0B0B0C' }}>
+    <section id="home" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', background: '#0B0B0C' }}>
       <motion.img
         src="https://images.unsplash.com/photo-1649789248266-ef1c7f744f6f?q=75&w=1600&auto=format&fit=crop"
         alt="Team TransformRS coaches training together"
@@ -57,7 +57,7 @@ export default function HeroSection() {
           style={{
             fontFamily: 'Oswald, sans-serif',
             fontWeight: 700,
-            fontSize: 'clamp(44px, min(10.5vw, 13vh), 140px)',
+            fontSize: 'clamp(38px, min(8vw, 10vh), 118px)',
             lineHeight: 1.0,
             letterSpacing: '-0.02em',
             textTransform: 'uppercase',
@@ -65,13 +65,13 @@ export default function HeroSection() {
           }}
         >
           <motion.span variants={line} style={{ display: 'block', color: 'transparent', WebkitTextStroke: 'clamp(1.5px, 0.2vw, 2px) rgba(255,255,255,0.9)' }}>
-            NOT YOUR
-          </motion.span>
-          <motion.span variants={line} style={{ display: 'block', color: 'transparent', WebkitTextStroke: 'clamp(1.5px, 0.2vw, 2px) #F4C400' }}>
-            TYPICAL
+            YOU DON'T NEED
           </motion.span>
           <motion.span variants={line} style={{ display: 'block', color: 'transparent', WebkitTextStroke: 'clamp(1.5px, 0.2vw, 2px) rgba(255,255,255,0.9)' }}>
-            FITNESS
+            MORE MOTIVATION
+          </motion.span>
+          <motion.span variants={line} style={{ display: 'block', color: 'transparent', WebkitTextStroke: 'clamp(1.5px, 0.2vw, 2px) #F4C400' }}>
+            A SYSTEM
           </motion.span>
         </h1>
 
@@ -79,28 +79,30 @@ export default function HeroSection() {
           variants={subheadline}
           style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(16px, 2.5vw, 22px)', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.05em', marginBottom: '40px', maxWidth: '600px' }}
         >
-          Two IFBB Pro coaches. One mission. Real transformation without the guilt.
+          One that works for you, not against you.
         </motion.p>
 
         <motion.div variants={buttonsVariant} className="flex-col md:flex-row" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
-          <button
+          <a
+            href="#contact"
             className="w-full md:w-auto"
-            style={{ background: '#F4C400', color: '#0B0B0C', fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', padding: '16px 40px', borderRadius: '999px', border: 'none', cursor: 'pointer', minHeight: '52px', transition: 'transform 200ms ease' }}
+            style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none', background: '#F4C400', color: '#0B0B0C', fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', padding: '16px 40px', borderRadius: '999px', border: 'none', cursor: 'pointer', minHeight: '52px', lineHeight: '20px', transition: 'transform 200ms ease' }}
             onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.97)')}
             onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
             onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           >
             Start Your Transformation
-          </button>
-          <button
+          </a>
+          <a
+            href="#coaches"
             className="w-full md:w-auto"
-            style={{ background: 'transparent', color: 'white', fontFamily: 'Oswald, sans-serif', fontWeight: 500, fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', padding: '16px 40px', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.5)', cursor: 'pointer', minHeight: '52px', transition: 'transform 200ms ease' }}
+            style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none', background: 'transparent', color: 'white', fontFamily: 'Oswald, sans-serif', fontWeight: 500, fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', padding: '16px 40px', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.5)', cursor: 'pointer', minHeight: '52px', lineHeight: '20px', transition: 'transform 200ms ease' }}
             onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.97)')}
             onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
             onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           >
             Meet the Coaches
-          </button>
+          </a>
         </motion.div>
       </motion.div>
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { coaches } from '../data/coaches'
 
 const reveal = {
   hidden: { opacity: 0, y: 32 },
@@ -25,7 +26,7 @@ export default function AboutSection() {
             <span style={{ color: '#F4C400' }}>Cost You Yourself</span>
           </h2>
           <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '22px', lineHeight: 1.6, color: '#333', marginBottom: '24px', borderLeft: '3px solid #F4C400', paddingLeft: '24px' }}>
-            "We don't believe in starving clients, shaming bodies, or creating dependency. We believe in building athletes who can eventually coach themselves."
+            "We don't believe in starving clients, shaming bodies, or creating dependency. We believe in building bodies, transformation, and sustainability."
           </p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', lineHeight: 1.8, color: '#666', marginBottom: '40px' }}>
             Real transformation happens when your plan fits your real life — festivals, family meals, work travel, and all. We combine IFBB Pro competitive expertise with a coaching philosophy built on sustainability, data, and respect.
@@ -40,22 +41,25 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        <motion.div
-          variants={reveal}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-          style={{ position: 'relative', zIndex: 0 }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1652363723034-e0deb0b48b15?q=75&w=900&auto=format&fit=crop"
-            alt="Coach and client celebrating a training win"
-            style={{ width: '100%', height: '600px', objectFit: 'cover', borderRadius: '4px' }}
-          />
-          <div
-            className="hidden md:block"
-            style={{ position: 'absolute', top: '24px', right: '-24px', width: '100%', height: '100%', border: '2px solid #F4C400', borderRadius: '4px', zIndex: -1 }}
-          />
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -80px 0px' }}>
+          <div className="grid grid-cols-2" style={{ gap: '12px' }}>
+            {coaches.map((coach) => (
+              <div key={coach.id} className="h-[320px] md:h-[560px]" style={{ position: 'relative', borderRadius: '4px', overflow: 'hidden' }}>
+                <img
+                  src={coach.img}
+                  alt={coach.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,11,12,0.75) 0%, transparent 45%)' }} />
+                <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px' }}>
+                  <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(13px, 1.5vw, 16px)', color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.5px', lineHeight: 1.2 }}>
+                    {coach.name}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ height: '2px', width: '64px', background: '#F4C400', marginTop: '20px' }} />
         </motion.div>
       </div>
     </section>
