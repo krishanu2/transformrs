@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { photos } from '../data/photos'
+import { photos as fallbackPhotos } from '../data/photos'
 
 const GAP = 16
 
@@ -26,15 +26,18 @@ function PhotoCard({ photo }) {
         <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#F4C400', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>
           {photo.service}
         </p>
-        <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '12px', color: 'rgba(255,255,255,0.6)', marginTop: '6px', lineHeight: 1.4 }}>
-          {photo.detail}
-        </p>
+        {photo.detail && (
+          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '12px', color: 'rgba(255,255,255,0.6)', marginTop: '6px', lineHeight: 1.4 }}>
+            {photo.detail}
+          </p>
+        )}
       </div>
     </div>
   )
 }
 
 export default function PhotoGridSection() {
+  const [photos, setPhotos] = useState(fallbackPhotos)
   const [activeIndex, setActiveIndex] = useState(0)
   const loopPhotos = [...photos, ...photos]
 
@@ -43,8 +46,24 @@ export default function PhotoGridSection() {
   const activeIndexRef = useRef(0)
 
   useEffect(() => {
+    fetch('/api/gallery')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((rows) => {
+        if (Array.isArray(rows) && rows.length > 0) {
+          setPhotos(rows.map((r) => ({ id: r.id, src: r.image_data, caption: r.caption, service: r.service, detail: r.detail })))
+        }
+      })
+      .catch(() => {
+        // keep the fallback photos already in state
+      })
+  }, [])
+
+  useEffect(() => {
     const track = trackRef.current
     if (!track) return
+    track.scrollLeft = 0
+    activeIndexRef.current = 0
+    setActiveIndex(0)
 
     let raf
     const step = () => {
@@ -65,7 +84,7 @@ export default function PhotoGridSection() {
     }
     raf = requestAnimationFrame(step)
     return () => cancelAnimationFrame(raf)
-  }, [])
+  }, [photos])
 
   const scrollToPhoto = (index) => {
     const track = trackRef.current

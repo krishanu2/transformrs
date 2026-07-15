@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import AdminPage from './AdminPage.jsx'
+
+const isAdmin = window.location.pathname.replace(/\/$/, '') === '/admin'
 
 // Browsers restore the previous scroll position on a normal reload. That
 // races with the scroll-triggered reveal animations below the fold: if the
@@ -16,6 +19,6 @@ window.scrollTo(0, 0)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    {isAdmin ? <AdminPage /> : <App />}
   </StrictMode>,
 )

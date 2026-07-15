@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 const btnBase = {
   fontFamily: 'Oswald, sans-serif',
   fontWeight: 600,
@@ -41,7 +43,68 @@ const lifestyleItems = [
 
 const contestPrepItems = ['Everything in Lifestyle Coaching', 'Backstage support on show day', 'Individualised off-season & contest-prep approach']
 
+// Used only if /api/pricing can't be reached, so pricing never just disappears.
+const FALLBACK_TIERS = [
+  { id: 'fallback-20', program_key: 'posing', tier_label: '20 min session', original_price_cents: null, price_cents: 150000, is_free: false },
+  { id: 'fallback-40', program_key: 'posing', tier_label: '40 min session', original_price_cents: null, price_cents: 210000, is_free: false },
+]
+
+function formatRupees(cents) {
+  return `₹${Math.round(cents / 100).toLocaleString('en-IN')}`
+}
+
+function PriceTable({ tiers, dark }) {
+  if (!tiers.length) return null
+  const textColor = dark ? '#FFF' : '#0B0B0C'
+  const labelColor = dark ? 'rgba(255,255,255,0.7)' : '#444'
+  const borderColor = dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.08)'
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '4px', border: `1px solid ${borderColor}`, borderRadius: '6px', overflow: 'hidden' }}>
+      {tiers.map((tier, i) => (
+        <div key={tier.id}>
+          {i > 0 && <div style={{ height: '1px', background: borderColor }} />}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px' }}>
+            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: labelColor }}>{tier.tier_label}</span>
+            <span style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+              {tier.is_free ? (
+                <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: '#F4C400' }}>FREE</span>
+              ) : (
+                <>
+                  {tier.original_price_cents != null && (
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: dark ? 'rgba(255,255,255,0.4)' : '#999', textDecoration: 'line-through' }}>
+                      {formatRupees(tier.original_price_cents)}
+                    </span>
+                  )}
+                  <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: textColor }}>
+                    {tier.price_cents != null ? formatRupees(tier.price_cents) : 'Contact us'}
+                  </span>
+                </>
+              )}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function ProgramsSection() {
+  const [tiers, setTiers] = useState(FALLBACK_TIERS)
+
+  useEffect(() => {
+    fetch('/api/pricing')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((data) => {
+        if (Array.isArray(data)) setTiers(data)
+      })
+      .catch(() => {
+        // keep the fallback tiers already in state
+      })
+  }, [])
+
+  const tiersFor = (key) => tiers.filter((t) => t.program_key === key)
+
   return (
     <section id="programs" style={{ background: '#F7F5F0', padding: 'clamp(80px, 10vw, 120px) clamp(24px, 4vw, 96px)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -68,6 +131,7 @@ export default function ProgramsSection() {
                 </li>
               ))}
             </ul>
+            <PriceTable tiers={tiersFor('lifestyle')} dark />
             <button style={{ ...btnBase, background: '#F4C400', color: '#0B0B0C' }}>Apply Now</button>
           </div>
 
@@ -84,6 +148,7 @@ export default function ProgramsSection() {
                 </li>
               ))}
             </ul>
+            <PriceTable tiers={tiersFor('contest_prep')} />
             <button style={{ ...btnBase, background: '#0B0B0C', color: '#F4C400' }}>Learn More</button>
           </div>
 
@@ -93,17 +158,7 @@ export default function ProgramsSection() {
             <p style={{ fontFamily: 'DM Sans, sans-serif', color: '#666', fontSize: '14px', lineHeight: 1.6 }}>
               Online posing sessions for any category — stage presence from an IFBB Pro.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0', marginTop: '4px', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '6px', overflow: 'hidden' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px' }}>
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#444' }}>20 min session</span>
-                <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: '#0B0B0C' }}>₹1,500</span>
-              </div>
-              <div style={{ height: '1px', background: 'rgba(0,0,0,0.08)' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 16px' }}>
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#444' }}>40 min session</span>
-                <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: '#0B0B0C' }}>₹2,100</span>
-              </div>
-            </div>
+            <PriceTable tiers={tiersFor('posing')} />
             <button style={{ ...btnBase, background: 'transparent', color: '#0B0B0C', border: '1.5px solid #0B0B0C' }}>Book Session</button>
           </div>
         </div>
