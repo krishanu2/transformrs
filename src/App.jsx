@@ -35,9 +35,9 @@ export default function App() {
       <HeroSection />
       <StatsStrip />
       <AboutSection />
-      <PhotoGridSection />
       <CoachesSection selectedCoachId={selectedCoachId} onSelectCoach={handleSelectCoach} />
       <ProgramsSection />
+      <PhotoGridSection />
       <TestimonialsSection selectedCoachId={selectedCoachId} onClearCoach={() => setSelectedCoachId(null)} />
       <ContactSection />
       <Footer />

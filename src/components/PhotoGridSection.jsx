@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { photos } from '../data/photos'
 
-const filters = ['All', 'Competition', 'Lifestyle']
 const GAP = 16
 
 function PhotoCard({ photo }) {
@@ -36,10 +35,8 @@ function PhotoCard({ photo }) {
 }
 
 export default function PhotoGridSection() {
-  const [activeFilter, setActiveFilter] = useState('all')
   const [activeIndex, setActiveIndex] = useState(0)
-  const filteredPhotos = activeFilter === 'all' ? photos : photos.filter((p) => p.category === activeFilter)
-  const loopPhotos = [...filteredPhotos, ...filteredPhotos]
+  const loopPhotos = [...photos, ...photos]
 
   const trackRef = useRef(null)
   const pausedRef = useRef(false)
@@ -48,20 +45,17 @@ export default function PhotoGridSection() {
   useEffect(() => {
     const track = trackRef.current
     if (!track) return
-    track.scrollLeft = 0
-    activeIndexRef.current = 0
-    setActiveIndex(0)
 
     let raf
     const step = () => {
-      if (!pausedRef.current && filteredPhotos.length > 1) {
+      if (!pausedRef.current && photos.length > 1) {
         const half = track.scrollWidth / 2
         track.scrollLeft += 0.5
         if (track.scrollLeft >= half) {
           track.scrollLeft -= half
         }
         const cardWidth = track.children[0]?.offsetWidth ?? 300
-        const idx = Math.round(track.scrollLeft / (cardWidth + GAP)) % filteredPhotos.length
+        const idx = Math.round(track.scrollLeft / (cardWidth + GAP)) % photos.length
         if (idx !== activeIndexRef.current) {
           activeIndexRef.current = idx
           setActiveIndex(idx)
@@ -71,7 +65,7 @@ export default function PhotoGridSection() {
     }
     raf = requestAnimationFrame(step)
     return () => cancelAnimationFrame(raf)
-  }, [activeFilter, filteredPhotos.length])
+  }, [])
 
   const scrollToPhoto = (index) => {
     const track = trackRef.current
@@ -90,34 +84,6 @@ export default function PhotoGridSection() {
         <h2 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(28px, 4vw, 48px)', color: '#0B0B0C', textTransform: 'uppercase' }}>
           What Transformation Looks Like
         </h2>
-
-        <div style={{ display: 'flex', gap: '12px', marginTop: '32px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {filters.map((filter) => {
-            const value = filter.toLowerCase()
-            const active = activeFilter === value
-            return (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(value)}
-                style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '13px',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                  padding: '10px 20px',
-                  borderRadius: '999px',
-                  border: active ? '2px solid #F4C400' : '1px solid rgba(0,0,0,0.15)',
-                  background: active ? 'rgba(244,196,0,0.12)' : 'transparent',
-                  color: active ? '#0B0B0C' : '#666',
-                  cursor: 'pointer',
-                  transition: 'all 200ms ease',
-                }}
-              >
-                {filter}
-              </button>
-            )
-          })}
-        </div>
       </div>
 
       <div style={{ overflow: 'hidden', position: 'relative' }}>
@@ -139,7 +105,7 @@ export default function PhotoGridSection() {
       </div>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '24px' }}>
-        {filteredPhotos.map((photo, i) => (
+        {photos.map((photo, i) => (
           <button
             key={photo.id}
             aria-label={`Go to photo ${i + 1}`}

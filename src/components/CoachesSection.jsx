@@ -7,8 +7,8 @@ const rowContainer = {
 }
 
 const photoVariants = {
-  hidden: { opacity: 0, scale: 0.94, x: -20 },
-  visible: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.7, ease: [0.215, 0.61, 0.355, 1] } },
+  hidden: { opacity: 0, scale: 0.94 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: [0.215, 0.61, 0.355, 1] } },
 }
 
 const contentVariants = {
@@ -19,6 +19,7 @@ const contentVariants = {
 function CoachRow({ coach, index, selected, onSelect }) {
   const num = String(index + 1).padStart(2, '0')
   const firstName = coach.name.split(' ')[0]
+  const imageFirst = index % 2 === 0
 
   return (
     <motion.div
@@ -27,42 +28,60 @@ function CoachRow({ coach, index, selected, onSelect }) {
       whileInView="visible"
       viewport={{ once: true, margin: '0px 0px -100px 0px' }}
       className="grid grid-cols-1 md:grid-cols-2"
-      style={{ gap: 'clamp(28px, 5vw, 56px)', alignItems: 'center' }}
+      style={{ gap: 'clamp(32px, 6vw, 64px)', alignItems: 'center' }}
     >
       <motion.div
         variants={photoVariants}
-        onClick={onSelect}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') onSelect()
-        }}
-        style={{
-          position: 'relative',
-          borderRadius: '8px',
-          overflow: 'hidden',
-          cursor: 'pointer',
-          border: selected ? '2px solid #F4C400' : '2px solid transparent',
-          boxShadow: selected ? '0 0 32px rgba(244,196,0,0.25)' : 'none',
-          transition: 'border-color 300ms ease, box-shadow 300ms ease',
-        }}
-        onMouseEnter={(e) => {
-          const img = e.currentTarget.querySelector('img')
-          if (img) img.style.transform = 'scale(1.05)'
-        }}
-        onMouseLeave={(e) => {
-          const img = e.currentTarget.querySelector('img')
-          if (img) img.style.transform = 'scale(1)'
-        }}
+        className={imageFirst ? 'md:order-1' : 'md:order-2'}
+        style={{ position: 'relative', zIndex: 0 }}
       >
-        <img
-          src={coach.img}
-          alt={coach.name}
-          style={{ width: '100%', height: 'clamp(340px, 42vw, 500px)', objectFit: 'cover', display: 'block', transition: 'transform 500ms ease' }}
+        <div
+          onClick={onSelect}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') onSelect()
+          }}
+          style={{
+            position: 'relative',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            cursor: 'pointer',
+            border: selected ? '2px solid #F4C400' : '2px solid transparent',
+            boxShadow: selected ? '0 0 32px rgba(244,196,0,0.25)' : 'none',
+            transition: 'border-color 300ms ease, box-shadow 300ms ease',
+          }}
+          onMouseEnter={(e) => {
+            const img = e.currentTarget.querySelector('img')
+            if (img) img.style.transform = 'scale(1.05)'
+          }}
+          onMouseLeave={(e) => {
+            const img = e.currentTarget.querySelector('img')
+            if (img) img.style.transform = 'scale(1)'
+          }}
+        >
+          <img
+            src={coach.img}
+            alt={coach.name}
+            style={{ width: '100%', height: 'clamp(340px, 42vw, 500px)', objectFit: 'cover', display: 'block', transition: 'transform 500ms ease' }}
+          />
+        </div>
+        <div
+          className="hidden md:block"
+          style={{
+            position: 'absolute',
+            top: '20px',
+            [imageFirst ? 'right' : 'left']: '-20px',
+            width: '100%',
+            height: '100%',
+            border: '2px solid #F4C400',
+            borderRadius: '8px',
+            zIndex: -1,
+          }}
         />
       </motion.div>
 
-      <motion.div variants={contentVariants}>
+      <motion.div variants={contentVariants} className={imageFirst ? 'md:order-2' : 'md:order-1'}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
           <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '20px', color: '#F4C400' }}>{num}</span>
           <span style={{ width: '28px', height: '1px', background: 'rgba(255,255,255,0.3)' }} />
@@ -71,11 +90,15 @@ function CoachRow({ coach, index, selected, onSelect }) {
           </span>
         </div>
 
-        <h3 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: '#FFFFFF', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: '20px' }}>
+        <h3 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: 'clamp(32px, 4vw, 48px)', color: '#FFFFFF', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: '16px' }}>
           {coach.name}
         </h3>
 
-        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', lineHeight: 1.8, color: 'rgba(255,255,255,0.65)', marginBottom: '24px', maxWidth: '440px' }}>
+        <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '20px', lineHeight: 1.5, color: '#F4C400', marginBottom: '20px', maxWidth: '440px' }}>
+          "{coach.tagline}"
+        </p>
+
+        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', lineHeight: 1.8, color: 'rgba(255,255,255,0.65)', marginBottom: '24px', maxWidth: '460px' }}>
           {coach.bio}
         </p>
 
@@ -136,7 +159,7 @@ export default function CoachesSection({ selectedCoachId, onSelectCoach }) {
   return (
     <section id="coaches" style={{ background: '#0B0B0C', padding: 'clamp(80px, 10vw, 120px) clamp(24px, 4vw, 96px)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ marginBottom: 'clamp(56px, 8vw, 96px)' }}>
+        <div style={{ marginBottom: 'clamp(64px, 9vw, 110px)' }}>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', letterSpacing: '4px', color: '#F4C400', textTransform: 'uppercase', marginBottom: '12px' }}>
             The Team
           </p>
@@ -146,7 +169,7 @@ export default function CoachesSection({ selectedCoachId, onSelectCoach }) {
           </h2>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(64px, 10vw, 120px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(72px, 11vw, 140px)' }}>
           {coaches.map((coach, i) => (
             <CoachRow
               key={coach.id}

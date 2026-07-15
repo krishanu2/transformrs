@@ -79,7 +79,7 @@ export default function HeroSection() {
           variants={subheadline}
           style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 'clamp(16px, 2.5vw, 22px)', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.05em', marginBottom: '40px', maxWidth: '600px' }}
         >
-          One that works for you, not against you.
+          That works for you, not against you.
         </motion.p>
 
         <motion.div variants={buttonsVariant} className="flex-col md:flex-row" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
