@@ -5,6 +5,7 @@ export const photos = [
     category: 'lifestyle',
     caption: 'Lost 8kg · 3 months',
     service: 'Lifestyle Coaching',
+    detail: 'Built around real meals, not restriction.',
   },
   {
     id: 11,
@@ -12,6 +13,7 @@ export const photos = [
     category: 'competition',
     caption: 'Bikini Prep Transformation',
     service: 'Contest Prep',
+    detail: '12 weeks of structured peak-week prep.',
   },
   {
     id: 12,
@@ -19,6 +21,7 @@ export const photos = [
     category: 'lifestyle',
     caption: 'Body Recomposition · 6 months',
     service: 'Lifestyle Coaching',
+    detail: 'Strength-first training with weekly check-ins.',
   },
   {
     id: 13,
@@ -26,6 +29,7 @@ export const photos = [
     category: 'lifestyle',
     caption: 'Sustainable Fat Loss · 4 months',
     service: 'Lifestyle Coaching',
+    detail: 'No fad diets — just consistency and tracking.',
   },
   {
     id: 14,
@@ -33,6 +37,7 @@ export const photos = [
     category: 'competition',
     caption: 'Stage Ready',
     service: 'Posing Coaching',
+    detail: 'Refined session by session, ready to walk out.',
   },
   {
     id: 15,
@@ -40,6 +45,7 @@ export const photos = [
     category: 'competition',
     caption: 'Off-Season to Stage · 8 months',
     service: 'Contest Prep',
+    detail: 'From off-season bulk to peak-week conditioning.',
   },
   {
     id: 16,
@@ -47,5 +53,6 @@ export const photos = [
     category: 'lifestyle',
     caption: 'Reverse Diet Success · 5 months',
     service: 'Lifestyle Coaching',
+    detail: 'Rebuilt metabolism through a guided reverse diet.',
   },
 ]

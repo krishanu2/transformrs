@@ -19,13 +19,16 @@ function PhotoCard({ photo }) {
       }}
     >
       <img src={photo.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,11,12,0.8) 0%, transparent 50%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,11,12,0.85) 0%, rgba(11,11,12,0.4) 45%, transparent 65%)' }} />
       <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px' }}>
-        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.9)', lineHeight: 1.4 }}>
+        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.95)', lineHeight: 1.4 }}>
           {photo.caption}
         </p>
         <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', color: '#F4C400', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>
           {photo.service}
+        </p>
+        <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '12px', color: 'rgba(255,255,255,0.6)', marginTop: '6px', lineHeight: 1.4 }}>
+          {photo.detail}
         </p>
       </div>
     </div>
