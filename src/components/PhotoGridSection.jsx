@@ -6,7 +6,7 @@ const GAP = 16
 function PhotoCard({ photo }) {
   return (
     <div
-      className="w-[240px] md:w-[300px] h-[320px] md:h-[400px]"
+      className="w-[280px] h-[280px] md:w-[360px] md:h-[360px]"
       style={{ position: 'relative', flexShrink: 0, borderRadius: '8px', overflow: 'hidden', transition: 'transform 300ms ease, box-shadow 300ms ease' }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-6px)'
