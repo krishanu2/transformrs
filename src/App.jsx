@@ -67,7 +67,7 @@ export default function App() {
               lineHeight: '24px',
             }}
           >
-            Start My Transformation
+            Book a Call
           </a>
         </div>
       )}

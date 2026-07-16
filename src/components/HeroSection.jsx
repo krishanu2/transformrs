@@ -93,7 +93,7 @@ export default function HeroSection() {
             onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
             onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
           >
-            Start Your Transformation
+            Book a Call
           </a>
           <a
             href="#coaches"

@@ -86,7 +86,8 @@ export default function Navbar() {
         ))}
       </div>
 
-      <button
+      <a
+        href="#contact"
         className="hidden md:inline-block"
         style={{
           background: '#F4C400',
@@ -100,10 +101,12 @@ export default function Navbar() {
           borderRadius: '999px',
           border: 'none',
           cursor: 'pointer',
+          textDecoration: 'none',
+          lineHeight: '15px',
         }}
       >
-        Start Your Journey
-      </button>
+        Book a Call
+      </a>
 
       <button
         className="md:hidden"

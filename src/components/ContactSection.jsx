@@ -72,7 +72,7 @@ export default function ContactSection() {
             See If We're<br /><span style={{ color: '#F4C400' }}>A Good Fit</span>
           </h2>
           <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '20px', color: '#444', lineHeight: 1.7, marginBottom: '32px' }}>
-            We personally review every application. Expect to hear back within 48 hours.
+            Fill this out and we'll set up a free call to talk it through. Expect to hear back within 48 hours.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {benefits.map((text) => (
@@ -103,10 +103,10 @@ export default function ContactSection() {
                   ✓
                 </motion.div>
                 <h3 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '24px', color: '#0B0B0C', marginBottom: '8px', textTransform: 'uppercase' }}>
-                  Application Received
+                  Call Request Received
                 </h3>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', color: '#666' }}>
-                  We personally review every application and respond within 48 hours.
+                  We'll reach out to schedule your call within 48 hours.
                 </p>
               </motion.div>
             ) : (
@@ -136,10 +136,9 @@ export default function ContactSection() {
                   <label style={labelStyle}>Your Goal</label>
                   <select required style={{ ...inputStyle, appearance: 'none' }} onFocus={goldFocus} onBlur={clearFocus} defaultValue="">
                     <option value="" disabled>Select your goal</option>
-                    <option>Sustainable fat loss / body recomposition</option>
+                    <option>Lifestyle coaching</option>
                     <option>Contest / bikini prep</option>
                     <option>Posing coaching only</option>
-                    <option>Group training</option>
                     <option>Not sure yet</option>
                   </select>
                 </motion.div>
@@ -187,11 +186,11 @@ export default function ContactSection() {
                       }}
                     />
                   )}
-                  {status === 'submitting' ? 'Submitting...' : 'Start My Transformation'}
+                  {status === 'submitting' ? 'Submitting...' : 'Book My Call'}
                 </motion.button>
 
                 <motion.p variants={fieldItem} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#999', textAlign: 'center' }}>
-                  We personally review every application and respond within 48 hours.
+                  We'll reach out to schedule your call within 48 hours.
                 </motion.p>
               </motion.form>
             )}

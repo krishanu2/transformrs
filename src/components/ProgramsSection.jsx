@@ -132,7 +132,7 @@ export default function ProgramsSection() {
               ))}
             </ul>
             <PriceTable tiers={tiersFor('lifestyle')} dark />
-            <button style={{ ...btnBase, background: '#F4C400', color: '#0B0B0C' }}>Apply Now</button>
+            <a href="#contact" style={{ ...btnBase, background: '#F4C400', color: '#0B0B0C', textDecoration: 'none', textAlign: 'center' }}>Book a Call</a>
           </div>
 
           <div style={{ background: '#F4C400', borderRadius: '8px', padding: '40px 32px', display: 'flex', flexDirection: 'column', gap: '16px', ...cardTransition }} {...cardHover(true)}>
@@ -149,7 +149,7 @@ export default function ProgramsSection() {
               ))}
             </ul>
             <PriceTable tiers={tiersFor('contest_prep')} />
-            <button style={{ ...btnBase, background: '#0B0B0C', color: '#F4C400' }}>Learn More</button>
+            <a href="#contact" style={{ ...btnBase, background: '#0B0B0C', color: '#F4C400', textDecoration: 'none', textAlign: 'center' }}>Book a Call</a>
           </div>
 
           <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '8px', padding: '40px 32px', display: 'flex', flexDirection: 'column', gap: '16px', ...cardTransition }} {...cardHover(false)}>
@@ -159,7 +159,7 @@ export default function ProgramsSection() {
               Online posing sessions for any category — stage presence from an IFBB Pro.
             </p>
             <PriceTable tiers={tiersFor('posing')} />
-            <button style={{ ...btnBase, background: 'transparent', color: '#0B0B0C', border: '1.5px solid #0B0B0C' }}>Book Session</button>
+            <a href="#contact" style={{ ...btnBase, background: 'transparent', color: '#0B0B0C', border: '1.5px solid #0B0B0C', textDecoration: 'none', textAlign: 'center' }}>Book a Call</a>
           </div>
         </div>
       </div>
