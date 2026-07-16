@@ -44,11 +44,11 @@ export default function AboutSection() {
         <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -80px 0px' }}>
           <div className="grid grid-cols-2" style={{ gap: '12px' }}>
             {coaches.map((coach) => (
-              <div key={coach.id} className="h-[320px] md:h-[560px]" style={{ position: 'relative', borderRadius: '4px', overflow: 'hidden' }}>
+              <div key={coach.id} className="h-[320px] md:h-[560px]" style={{ position: 'relative', borderRadius: '4px', overflow: 'hidden', background: '#151515' }}>
                 <img
-                  src={coach.img}
+                  src={coach.aboutImg || coach.img}
                   alt={coach.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: '100%', objectFit: coach.imgFit || 'cover', display: 'block' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,11,12,0.75) 0%, transparent 45%)' }} />
                 <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px' }}>

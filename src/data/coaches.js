@@ -17,6 +17,7 @@ export const coaches = [
     bio: "Sundram is an IFBB Pro men's physique competitor who self-coached his own way to Pro status — no outside coach, just relentless self-study and precise execution. That same evidence-based approach now drives his online coaching at Team TransformRS: structured training and precise nutrition for real body recomposition, no crash diets required. He also works closely with competitors on posing, refining the small details that make the difference on stage.",
     badges: ['IFBB Pro', 'Self-Coached Pro', 'Posing'],
     img: '/images/sundram.jpg',
-    imgPosition: 'center 15%',
+    imgFit: 'contain',
+    aboutImg: '/images/sundram-about.jpg',
   },
 ]

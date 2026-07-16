@@ -50,6 +50,7 @@ function CoachRow({ coach, index, selected, onSelect }) {
             border: selected ? '2px solid #F4C400' : '2px solid transparent',
             boxShadow: selected ? '0 0 32px rgba(244,196,0,0.25)' : 'none',
             transition: 'border-color 300ms ease, box-shadow 300ms ease',
+            background: '#151515',
           }}
           onMouseEnter={(e) => {
             const img = e.currentTarget.querySelector('img')
@@ -63,7 +64,7 @@ function CoachRow({ coach, index, selected, onSelect }) {
           <img
             src={coach.img}
             alt={coach.name}
-            style={{ width: '100%', height: 'clamp(340px, 42vw, 500px)', objectFit: 'cover', objectPosition: coach.imgPosition || 'center', display: 'block', transition: 'transform 500ms ease' }}
+            style={{ width: '100%', height: 'clamp(340px, 42vw, 500px)', objectFit: coach.imgFit || 'cover', objectPosition: coach.imgPosition || 'center', display: 'block', transition: 'transform 500ms ease' }}
           />
         </div>
         <div
