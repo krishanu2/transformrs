@@ -18,6 +18,9 @@ function coachName(coachId) {
 }
 
 function TestimonialCard({ t, style }) {
+  const names = (t.coachIds || []).map(coachName).filter(Boolean)
+  const attribution = names.length ? names.join(' & ') : 'Team TransformRS'
+
   return (
     <motion.div
       variants={card}
@@ -28,10 +31,12 @@ function TestimonialCard({ t, style }) {
         {t.text}
       </p>
       <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', background: 'rgba(244,196,0,0.1)', color: '#F4C400', padding: '4px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-        Coached by {coachName(t.coachId)}
+        Coached by {attribution}
       </span>
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '20px', marginTop: '20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-        <img src={t.avatar} alt={t.name} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover' }} />
+        <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(244,196,0,0.12)', border: '1px solid rgba(244,196,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: '#F4C400' }}>{t.name.charAt(0)}</span>
+        </div>
         <div>
           <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '15px', color: '#FFF', textTransform: 'uppercase' }}>{t.name}</p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#F4C400' }}>{t.result}</p>
@@ -44,7 +49,7 @@ function TestimonialCard({ t, style }) {
 export default function TestimonialsSection({ selectedCoachId, onClearCoach }) {
   const isMobile = useMediaQuery('(max-width: 767px)')
   const selectedCoach = selectedCoachId ? coaches.find((c) => c.id === selectedCoachId) : null
-  const filtered = selectedCoachId ? testimonials.filter((t) => t.coachId === selectedCoachId) : testimonials
+  const filtered = selectedCoachId ? testimonials.filter((t) => (t.coachIds || []).includes(selectedCoachId)) : testimonials
 
   return (
     <section id="testimonials" style={{ background: '#0B0B0C', padding: 'clamp(80px, 10vw, 120px) clamp(24px, 4vw, 96px)' }}>
