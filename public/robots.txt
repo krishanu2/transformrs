@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://transformrs.vercel.app/sitemap.xml
+Sitemap: https://transformrs.in/sitemap.xml

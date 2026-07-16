@@ -290,6 +290,7 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState('pricing')
   const [tiers, setTiers] = useState(null)
   const [photos, setPhotos] = useState(null)
+  const [loadError, setLoadError] = useState(false)
   const [toast, setToast] = useState({ message: '', kind: 'ok' })
   const [uploading, setUploading] = useState(false)
   const fileInputRef = useRef(null)
@@ -304,12 +305,17 @@ export default function AdminPage() {
   }
 
   async function loadAll() {
+    setLoadError(false)
     try {
       const [tiersRes, photosRes] = await Promise.all([fetch('/api/pricing'), fetch('/api/gallery')])
-      setTiers(await tiersRes.json())
-      setPhotos(await photosRes.json())
+      if (!tiersRes.ok || !photosRes.ok) throw new Error('Request failed')
+      const [tiersData, photosData] = await Promise.all([tiersRes.json(), photosRes.json()])
+      if (!Array.isArray(tiersData) || !Array.isArray(photosData)) throw new Error('Unexpected response')
+      setTiers(tiersData)
+      setPhotos(photosData)
     } catch {
-      showToast("Couldn't load your data. Check your internet and refresh.", 'error')
+      setLoadError(true)
+      showToast("Couldn't load your data. Check your internet and try again.", 'error')
     }
   }
 
@@ -332,7 +338,8 @@ export default function AdminPage() {
   async function deleteTier(id) {
     if (!confirm('Remove this price? This cannot be undone.')) return
     try {
-      await fetch(`/api/pricing?id=${id}`, { method: 'DELETE' })
+      const res = await fetch(`/api/pricing?id=${id}`, { method: 'DELETE' })
+      if (!res.ok) throw new Error()
       setTiers((prev) => prev.filter((t) => t.id !== id))
       showToast('Removed.')
     } catch {
@@ -347,6 +354,7 @@ export default function AdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ program_key: programKey, tier_label: 'New option' }),
       })
+      if (!res.ok) throw new Error()
       const created = await res.json()
       setTiers((prev) => [...prev, created])
     } catch {
@@ -373,7 +381,8 @@ export default function AdminPage() {
   async function deletePhoto(id) {
     if (!confirm('Delete this photo from your website? This cannot be undone.')) return
     try {
-      await fetch(`/api/gallery?id=${id}`, { method: 'DELETE' })
+      const res = await fetch(`/api/gallery?id=${id}`, { method: 'DELETE' })
+      if (!res.ok) throw new Error()
       setPhotos((prev) => prev.filter((p) => p.id !== id))
       showToast('Photo deleted.')
     } catch {
@@ -392,6 +401,7 @@ export default function AdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image_data: dataUrl, caption: '', service: '', detail: '' }),
       })
+      if (!res.ok) throw new Error()
       const created = await res.json()
       setPhotos((prev) => [...prev, created])
       showToast('Photo added! Add a caption below if you\'d like — totally optional.')
@@ -419,7 +429,12 @@ export default function AdminPage() {
       </div>
 
       <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '36px 24px 100px' }}>
-        {loading ? (
+        {loadError ? (
+          <div style={{ textAlign: 'center', marginTop: '60px' }}>
+            <p style={{ color: '#8A8578', marginBottom: '16px' }}>Couldn't load your website's data. Check your internet and try again.</p>
+            <button style={btnPrimary} onClick={loadAll}>Try Again</button>
+          </div>
+        ) : loading ? (
           <p style={{ textAlign: 'center', color: '#8A8578', marginTop: '60px' }}>Loading your website's data…</p>
         ) : (
           <>

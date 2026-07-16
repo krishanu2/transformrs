@@ -1,8 +1,15 @@
 import { neon } from '@neondatabase/serverless'
 
-const sql = neon(process.env.DATABASE_URL)
+let sql
+try {
+  sql = neon(process.env.DATABASE_URL)
+} catch (err) {
+  console.error('Failed to initialize database client:', err)
+}
 
 export default async function handler(req, res) {
+  if (!sql) return res.status(500).json({ error: 'Database is not configured' })
+
   try {
     if (req.method === 'GET') {
       const rows = await sql`SELECT * FROM gallery_photos ORDER BY sort_order, id`

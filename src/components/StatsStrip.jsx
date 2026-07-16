@@ -5,7 +5,7 @@ const stats = [
   { value: 500, suffix: '+', label: 'Clients Transformed' },
   { value: 2, suffix: '', label: 'IFBB Pro Coaches' },
   { value: 6, suffix: '+', label: 'Years Coaching' },
-  { value: 4, suffix: '', label: 'Services · Lifestyle · Contest Prep · Posing', small: true },
+  { value: 3, suffix: '', label: 'Services · Lifestyle · Contest Prep · Posing', small: true },
 ]
 
 function StatCard({ value, suffix, label, small }) {

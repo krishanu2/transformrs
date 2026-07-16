@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import AdminPage from './AdminPage.jsx'
+import ErrorBoundary from './ErrorBoundary.jsx'
 
 const isAdmin = window.location.pathname.replace(/\/$/, '') === '/admin'
 
@@ -19,6 +20,8 @@ window.scrollTo(0, 0)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {isAdmin ? <AdminPage /> : <App />}
+    <ErrorBoundary>
+      {isAdmin ? <AdminPage /> : <App />}
+    </ErrorBoundary>
   </StrictMode>,
 )
