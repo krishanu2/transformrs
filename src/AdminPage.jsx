@@ -218,6 +218,9 @@ function PhotoCard({ photo, onSave, onDelete }) {
   const dirty = caption !== photo.caption || service !== photo.service || detail !== photo.detail
 
   async function handleSave() {
+    if (!caption.trim() && !service.trim()) {
+      if (!confirm("You haven't added a caption or service tag — this photo will show with no label on your site. Save anyway?")) return
+    }
     setSaving(true)
     await onSave(photo.id, { caption, service, detail })
     setSaving(false)
@@ -387,11 +390,11 @@ export default function AdminPage() {
       const res = await fetch('/api/gallery', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image_data: dataUrl, caption: 'New transformation', service: 'Lifestyle Coaching', detail: '' }),
+        body: JSON.stringify({ image_data: dataUrl, caption: '', service: '', detail: '' }),
       })
       const created = await res.json()
       setPhotos((prev) => [...prev, created])
-      showToast('Photo added! Fill in the details below and hit Save.')
+      showToast('Photo added! Add a caption below if you\'d like — totally optional.')
     } catch {
       showToast("Couldn't upload that photo. Try a smaller file.", 'error')
     } finally {

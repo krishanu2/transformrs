@@ -117,7 +117,7 @@ export default function ProgramsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '16px', alignItems: 'start' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '16px', alignItems: 'stretch' }}>
           <div style={{ background: '#0B0B0C', borderRadius: '8px', padding: '40px 32px', borderTop: '3px solid #F4C400', display: 'flex', flexDirection: 'column', gap: '16px', ...cardTransition }} {...cardHover(false)}>
             <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', letterSpacing: '3px', color: '#F4C400', textTransform: 'uppercase' }}>Most Popular</span>
             <h3 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '28px', color: '#FFF', textTransform: 'uppercase' }}>Lifestyle Coaching</h3>
@@ -132,7 +132,7 @@ export default function ProgramsSection() {
               ))}
             </ul>
             <PriceTable tiers={tiersFor('lifestyle')} dark />
-            <a href="#contact" style={{ ...btnBase, background: '#F4C400', color: '#0B0B0C', textDecoration: 'none', textAlign: 'center' }}>Book a Call</a>
+            <a href="#contact" style={{ ...btnBase, background: '#F4C400', color: '#0B0B0C', textDecoration: 'none', textAlign: 'center', marginTop: 'auto' }}>Book a Call</a>
           </div>
 
           <div style={{ background: '#F4C400', borderRadius: '8px', padding: '40px 32px', display: 'flex', flexDirection: 'column', gap: '16px', ...cardTransition }} {...cardHover(true)}>
@@ -149,7 +149,7 @@ export default function ProgramsSection() {
               ))}
             </ul>
             <PriceTable tiers={tiersFor('contest_prep')} />
-            <a href="#contact" style={{ ...btnBase, background: '#0B0B0C', color: '#F4C400', textDecoration: 'none', textAlign: 'center' }}>Book a Call</a>
+            <a href="#contact" style={{ ...btnBase, background: '#0B0B0C', color: '#F4C400', textDecoration: 'none', textAlign: 'center', marginTop: 'auto' }}>Book a Call</a>
           </div>
 
           <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '8px', padding: '40px 32px', display: 'flex', flexDirection: 'column', gap: '16px', ...cardTransition }} {...cardHover(false)}>
@@ -159,7 +159,7 @@ export default function ProgramsSection() {
               Online posing sessions for any category — stage presence from an IFBB Pro.
             </p>
             <PriceTable tiers={tiersFor('posing')} />
-            <a href="#contact" style={{ ...btnBase, background: 'transparent', color: '#0B0B0C', border: '1.5px solid #0B0B0C', textDecoration: 'none', textAlign: 'center' }}>Book a Call</a>
+            <a href="#contact" style={{ ...btnBase, background: 'transparent', color: '#0B0B0C', border: '1.5px solid #0B0B0C', textDecoration: 'none', textAlign: 'center', marginTop: 'auto' }}>Book a Call</a>
           </div>
         </div>
       </div>

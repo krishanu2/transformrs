@@ -63,7 +63,7 @@ function CoachRow({ coach, index, selected, onSelect }) {
           <img
             src={coach.img}
             alt={coach.name}
-            style={{ width: '100%', height: 'clamp(340px, 42vw, 500px)', objectFit: 'cover', display: 'block', transition: 'transform 500ms ease' }}
+            style={{ width: '100%', height: 'clamp(340px, 42vw, 500px)', objectFit: 'cover', objectPosition: coach.imgPosition || 'center', display: 'block', transition: 'transform 500ms ease' }}
           />
         </div>
         <div
