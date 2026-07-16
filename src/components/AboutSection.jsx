@@ -48,7 +48,13 @@ export default function AboutSection() {
                 <img
                   src={coach.aboutImg || coach.img}
                   alt={coach.name}
-                  style={{ width: '100%', height: '100%', objectFit: coach.imgFit || 'cover', display: 'block' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: coach.imgFit || 'cover',
+                    display: 'block',
+                    transform: coach.aboutImgZoom ? `scale(${coach.aboutImgZoom})` : undefined,
+                  }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,11,12,0.75) 0%, transparent 45%)' }} />
                 <div style={{ position: 'absolute', bottom: '16px', left: '16px', right: '16px' }}>

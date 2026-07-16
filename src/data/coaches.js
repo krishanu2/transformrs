@@ -18,5 +18,6 @@ export const coaches = [
     badges: ['IFBB Pro', 'Self-Coached Pro', 'Posing'],
     img: '/images/sundram.jpg',
     aboutImg: '/images/sundram-about.jpg',
+    aboutImgZoom: 1.3,
   },
 ]
