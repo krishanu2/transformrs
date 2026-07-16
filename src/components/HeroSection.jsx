@@ -57,7 +57,7 @@ export default function HeroSection() {
           style={{
             fontFamily: 'Oswald, sans-serif',
             fontWeight: 700,
-            fontSize: 'clamp(38px, min(8vw, 10vh), 118px)',
+            fontSize: 'clamp(32px, min(8vw, 11vh), 108px)',
             lineHeight: 1.0,
             letterSpacing: '-0.02em',
             textTransform: 'uppercase',
@@ -71,7 +71,7 @@ export default function HeroSection() {
             MORE MOTIVATION
           </motion.span>
           <motion.span variants={line} style={{ display: 'block', color: 'transparent', WebkitTextStroke: 'clamp(1.5px, 0.2vw, 2px) #F4C400' }}>
-            A SYSTEM
+            YOU NEED A SYSTEM
           </motion.span>
         </h1>
 
