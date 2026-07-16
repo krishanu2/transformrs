@@ -72,11 +72,11 @@ function PriceTable({ tiers, dark }) {
               ) : (
                 <>
                   {tier.original_price_cents != null && (
-                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: dark ? 'rgba(255,255,255,0.4)' : '#999', textDecoration: 'line-through' }}>
+                    <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: dark ? 'rgba(255,255,255,0.4)' : '#999', textDecoration: 'line-through', fontVariantNumeric: 'tabular-nums' }}>
                       {formatRupees(tier.original_price_cents)}
                     </span>
                   )}
-                  <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: textColor }}>
+                  <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '18px', color: textColor, fontVariantNumeric: 'tabular-nums' }}>
                     {tier.price_cents != null ? formatRupees(tier.price_cents) : 'Contact us'}
                   </span>
                 </>
@@ -117,7 +117,7 @@ export default function ProgramsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '16px', alignItems: 'stretch' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '16px', alignItems: 'start' }}>
           <div style={{ background: '#0B0B0C', borderRadius: '8px', padding: '40px 32px', borderTop: '3px solid #F4C400', display: 'flex', flexDirection: 'column', gap: '16px', ...cardTransition }} {...cardHover(false)}>
             <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '11px', letterSpacing: '3px', color: '#F4C400', textTransform: 'uppercase' }}>Most Popular</span>
             <h3 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '28px', color: '#FFF', textTransform: 'uppercase' }}>Lifestyle Coaching</h3>

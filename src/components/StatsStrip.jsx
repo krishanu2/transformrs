@@ -34,7 +34,7 @@ function StatCard({ value, suffix, label }) {
 
   return (
     <div ref={ref} style={{ textAlign: 'center', padding: '0 16px' }}>
-      <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '44px', color: '#F4C400' }}>
+      <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '44px', color: '#F4C400', fontVariantNumeric: 'tabular-nums' }}>
         {display}
         {suffix}
       </div>

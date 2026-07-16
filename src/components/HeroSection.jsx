@@ -31,6 +31,8 @@ export default function HeroSection() {
       <motion.img
         src="/images/hero-coaches.jpg"
         alt="Team TransformRS coaches training together"
+        fetchPriority="high"
+        decoding="async"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 25%', filter: 'brightness(0.5)', y: parallaxY }}
       />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(11,11,12,0.2) 0%, rgba(11,11,12,0.1) 50%, rgba(11,11,12,0.8) 100%)' }} />

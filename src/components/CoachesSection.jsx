@@ -95,7 +95,7 @@ function CoachRow({ coach, index, selected, onSelect }) {
         </h3>
 
         <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '20px', lineHeight: 1.5, color: '#F4C400', marginBottom: '20px', maxWidth: '440px' }}>
-          "{coach.tagline}"
+          “{coach.tagline}”
         </p>
 
         <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', lineHeight: 1.8, color: 'rgba(255,255,255,0.65)', marginBottom: '24px', maxWidth: '460px' }}>

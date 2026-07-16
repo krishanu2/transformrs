@@ -26,7 +26,7 @@ export default function AboutSection() {
             <span style={{ color: '#F4C400' }}>Cost You Yourself</span>
           </h2>
           <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '22px', lineHeight: 1.6, color: '#333', marginBottom: '24px', borderLeft: '3px solid #F4C400', paddingLeft: '24px' }}>
-            "We don't believe in starving clients, shaming bodies, or creating dependency. We believe in building bodies, transformation, and sustainability."
+            “We don't believe in starving clients, shaming bodies, or creating dependency. We believe in building bodies, transformation, and sustainability.”
           </p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '16px', lineHeight: 1.8, color: '#666', marginBottom: '40px' }}>
             Real transformation happens when your plan fits your real life — festivals, family meals, work travel, and all. We combine IFBB Pro competitive expertise with a coaching philosophy built on sustainability, data, and respect.

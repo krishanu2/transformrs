@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+
+# Locally-installed agent skill tooling (not part of the site)
+.agents
+.claude
+skills-lock.json
