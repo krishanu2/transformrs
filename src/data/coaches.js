@@ -2,9 +2,9 @@ export const coaches = [
   {
     id: 20,
     name: 'Rutuja Hegshetye',
-    role: 'IFBB Pro · Head Coach',
+    role: 'IFBB Pro · Coach',
     tagline: "Because “get shredded” shouldn't mean losing yourself.",
-    bio: "Rutuja is an IFBB Pro bikini competitor and the head coach at Team TransformRS, specializing in women's physique. She's competed at the professional level herself, so her coaching comes from experience, not just theory — sustainable fat loss, hormonal health, and contest-ready conditioning, built around real life instead of extreme restriction. Every plan she writes is designed to work with your body, not against it.",
+    bio: "Rutuja is an IFBB Pro bikini competitor and coach at Team TransformRS, specializing in women's physique. She's competed at the professional level herself, so her coaching comes from experience, not just theory — sustainable fat loss, hormonal health, and contest-ready conditioning, built around real life instead of extreme restriction. Every plan she writes is designed to work with your body, not against it.",
     badges: ['IFBB Pro', 'Bikini Prep', "Women's Physique"],
     img: '/images/rutuja.jpg',
     imgPosition: 'center 12%',
