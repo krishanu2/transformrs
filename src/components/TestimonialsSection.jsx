@@ -14,7 +14,7 @@ function TestimonialCard({ t }) {
 
   return (
     <div
-      className="w-[280px] md:w-[380px] h-[320px] md:h-[300px]"
+      className="w-[280px] md:w-[380px]"
       style={{
         flexShrink: 0,
         background: 'rgba(255,255,255,0.04)',
@@ -36,10 +36,6 @@ function TestimonialCard({ t }) {
           color: 'rgba(255,255,255,0.85)',
           lineHeight: 1.6,
           marginBottom: '14px',
-          display: '-webkit-box',
-          WebkitLineClamp: 5,
-          WebkitBoxOrient: 'vertical',
-          overflow: 'hidden',
           flex: 1,
         }}
       >
