@@ -41,7 +41,14 @@ const lifestyleItems = [
   'Supplement plan',
 ]
 
-const contestPrepItems = ['Everything in Lifestyle Coaching', 'Backstage support on show day', 'Individualised off-season & contest-prep approach']
+const contestPrepItems = [...lifestyleItems, 'Backstage support on show day', 'Individualised off-season & contest-prep approach']
+
+const posingItems = [
+  'One-on-one online posing session with an IFBB Pro',
+  'Category-specific mandatory poses',
+  'Stage walk & transition practice',
+  'Video review with real-time correction',
+]
 
 // Used only if /api/pricing can't be reached, so pricing never just disappears.
 const FALLBACK_TIERS = [
@@ -158,7 +165,13 @@ export default function ProgramsSection() {
             <p style={{ fontFamily: 'DM Sans, sans-serif', color: '#666', fontSize: '14px', lineHeight: 1.6 }}>
               Online posing sessions for any category — stage presence from an IFBB Pro.
             </p>
-            <PriceTable tiers={tiersFor('posing')} />
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px', listStyle: 'none', padding: 0 }}>
+              {posingItems.map((f) => (
+                <li key={f} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: '#444', display: 'flex', gap: '10px' }}>
+                  <span style={{ color: '#F4C400', flexShrink: 0 }}>→</span> {f}
+                </li>
+              ))}
+            </ul>
             <a href="#contact" style={{ ...btnBase, background: 'transparent', color: '#0B0B0C', border: '1.5px solid #0B0B0C', textDecoration: 'none', textAlign: 'center', marginTop: 'auto' }}>Book a Call</a>
           </div>
         </div>
