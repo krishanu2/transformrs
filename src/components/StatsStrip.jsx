@@ -5,10 +5,10 @@ const stats = [
   { value: 500, suffix: '+', label: 'Clients Transformed' },
   { value: 2, suffix: '', label: 'IFBB Pro Coaches' },
   { value: 6, suffix: '+', label: 'Years Coaching' },
-  { value: 4, suffix: '', label: 'Services · Lifestyle · Prep · Posing' },
+  { value: 4, suffix: '', label: 'Services · Lifestyle · Contest Prep · Posing', small: true },
 ]
 
-function StatCard({ value, suffix, label }) {
+function StatCard({ value, suffix, label, small }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.3, margin: '0px 0px -80px 0px' })
   const [display, setDisplay] = useState(0)
@@ -41,7 +41,17 @@ function StatCard({ value, suffix, label }) {
       <div style={{ width: '100%', height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '999px', overflow: 'hidden', marginTop: '12px' }}>
         <div style={{ width: `${progress}%`, height: '100%', background: '#F4C400', borderRadius: '999px' }} />
       </div>
-      <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: '#999999', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '12px' }}>
+      <div
+        style={{
+          fontFamily: 'DM Sans, sans-serif',
+          fontSize: small ? 'clamp(9px, 2.1vw, 11px)' : '12px',
+          color: '#999999',
+          textTransform: 'uppercase',
+          letterSpacing: small ? '0.5px' : '1px',
+          marginTop: '12px',
+          whiteSpace: 'nowrap',
+        }}
+      >
         {label}
       </div>
     </div>
@@ -54,7 +64,7 @@ export default function StatsStrip() {
       <div className="grid grid-cols-2 md:grid-cols-4" style={{ maxWidth: '1200px', margin: '0 auto', gap: '24px' }}>
         {stats.map((stat, i) => (
           <div key={stat.label} className={i !== 0 ? 'md:border-l md:border-white/10' : ''}>
-            <StatCard value={stat.value} suffix={stat.suffix} label={stat.label} />
+            <StatCard value={stat.value} suffix={stat.suffix} label={stat.label} small={stat.small} />
           </div>
         ))}
       </div>
