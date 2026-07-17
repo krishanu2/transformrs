@@ -40,6 +40,7 @@ export default function Navbar() {
   }, [open])
 
   return (
+    <>
     <nav
       style={{
         position: 'fixed',
@@ -119,56 +120,58 @@ export default function Navbar() {
         <div style={{ width: '24px', height: '2px', background: '#F4C400' }} />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: '#0B0B0C',
-              zIndex: 60,
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '24px',
-            }}
-          >
-            <button
-              aria-label="Close menu"
-              onClick={() => setOpen(false)}
-              style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: '#F4C400', fontSize: '28px', cursor: 'pointer', minHeight: '56px', minWidth: '56px' }}
-            >
-              ×
-            </button>
-            <div style={{ display: 'flex', flexDirection: 'column', marginTop: '24px' }}>
-              {links.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  onClick={() => setOpen(false)}
-                  style={{
-                    fontFamily: 'Oswald, sans-serif',
-                    fontWeight: 700,
-                    fontSize: '28px',
-                    color: 'white',
-                    textDecoration: 'none',
-                    textTransform: 'uppercase',
-                    minHeight: '56px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    borderBottom: '1px solid rgba(255,255,255,0.06)',
-                  }}
-                >
-                  {link}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
+
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: '#0B0B0C',
+            zIndex: 60,
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '24px',
+          }}
+        >
+          <button
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+            style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: '#F4C400', fontSize: '28px', cursor: 'pointer', minHeight: '56px', minWidth: '56px' }}
+          >
+            ×
+          </button>
+          <div style={{ display: 'flex', flexDirection: 'column', marginTop: '24px' }}>
+            {links.map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                onClick={() => setOpen(false)}
+                style={{
+                  fontFamily: 'Oswald, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '28px',
+                  color: 'white',
+                  textDecoration: 'none',
+                  textTransform: 'uppercase',
+                  minHeight: '56px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  borderBottom: '1px solid rgba(255,255,255,0.06)',
+                }}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   )
 }
