@@ -13,7 +13,7 @@ const fieldItem = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
-const CALENDLY_URL = 'https://calendly.com/rutujahegshetye5/1---1-consultation-call'
+const BOOKING_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdKq40Q5N4MC-_9MavAIpqQ2ShXvlLzRtslCSKb1hZizlfFGg/viewform'
 
 export default function ContactSection() {
   return (
@@ -27,7 +27,7 @@ export default function ContactSection() {
             See If We're<br /><span style={{ color: '#F4C400' }}>A Good Fit</span>
           </h2>
           <p style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: '20px', color: '#444', lineHeight: 1.7, marginBottom: '32px' }}>
-            Pick a time that works for you, and let's talk through your goals on a free call.
+            Tell us a little about yourself, and let's talk through your goals on a free call.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {benefits.map((text) => (
@@ -50,10 +50,10 @@ export default function ContactSection() {
               Ready When You Are
             </h3>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '15px', color: '#666', marginBottom: '32px', maxWidth: '340px' }}>
-              Book a free 1-on-1 consultation call directly on our calendar — pick whatever slot suits you.
+              Fill out a quick form and we'll reach out to set up your free 1-on-1 consultation call.
             </p>
             <a
-              href={CALENDLY_URL}
+              href={BOOKING_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{

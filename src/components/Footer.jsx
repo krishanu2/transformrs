@@ -31,6 +31,13 @@ export default function Footer() {
             Coached by Pros. Built for real life.
           </p>
         </div>
+
+        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.3)', textAlign: 'center', marginTop: '24px' }}>
+          Made by{' '}
+          <a href="https://wa.me/919007488910" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'underline' }}>
+            Krishanu
+          </a>
+        </p>
       </div>
     </footer>
   )
